@@ -9,21 +9,34 @@ CABI adalah platform pre-order makanan Click & Collect yang dirancang khusus unt
 ## 📸 Screenshots
 
 ### Landing Page
-## Preview
 
+## Preview
 ![Landing Page](./assets/Landing.png)
+![Landing Page](./assets/landing 2.png)
+
+![Dashboard](./assets/dashboard.png)
 
 - Hero section dengan phone mockup interaktif
 - Problem statement yang relatable untuk mahasiswa
 - Step-by-step cara kerja yang simpel
 
 ### App — Menu & Ordering
+
+## Preview
+![Landing Page](./assets/Menu.png)
+![Landing Page](./assets/Menu 2.png)
+
 - Pilih lokasi pickup terdekat (dengan GPS sorting)
 - Browse menu dengan stok real-time
 - Checkout dengan opsi Ambil Sendiri / Delivery
 - Konfirmasi pesanan via WhatsApp
 
 ### Admin Dashboard
+
+## Preview
+![Landing Page](./assets/Admin.png)
+![Landing Page](./assets/Admin 2.png)
+
 - Login dengan Supabase Auth
 - Manajemen stok per lokasi (real-time sync)
 - CRUD menu (nama, harga, foto, deskripsi)
