@@ -57,12 +57,12 @@ CABI adalah platform pre-order makanan Click & Collect yang dirancang khusus unt
 
 ## 🚀 Live Demo
 
-🔗 **Live URL**: *(masukkan URL Netlify di sini)*
+🔗 **Live URL**: https://camilanbinusbandung.netlify.app
 
 ### Akun Demo Admin:
 - **Email**: *(masukkan email admin)*
 - **Password**: *(masukkan password admin)*
-
+(User tidak perlu Login)
 ---
 
 ## 📁 Struktur Proyek
