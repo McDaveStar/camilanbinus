@@ -12,7 +12,6 @@ CABI adalah platform pre-order makanan Click & Collect yang dirancang khusus unt
 
 ## Preview
 ![Landing Page](./assets/Landing.png)
-![Landing Page](./assets/Landing 2.png)
 
 - Hero section dengan phone mockup interaktif
 - Problem statement yang relatable untuk mahasiswa
@@ -31,8 +30,7 @@ CABI adalah platform pre-order makanan Click & Collect yang dirancang khusus unt
 ### Admin Dashboard
 
 ## Preview
-![Landing Page](./assets/Admin Page.png)
-![Landing Page](./assets/Admin Page 2.png)
+![Landing Page](./assets/Admin Page 1.png)
 
 - Login dengan Supabase Auth
 - Manajemen stok per lokasi (real-time sync)
