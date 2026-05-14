@@ -30,7 +30,7 @@ CABI adalah platform pre-order makanan Click & Collect yang dirancang khusus unt
 ### Admin Dashboard
 
 ## Preview
-![Landing Page](./assets/Admin Page 1.png)
+![Landing Page](./assets/Admin.png)
 
 - Login dengan Supabase Auth
 - Manajemen stok per lokasi (real-time sync)
