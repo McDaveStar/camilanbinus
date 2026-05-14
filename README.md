@@ -9,6 +9,10 @@ CABI adalah platform pre-order makanan Click & Collect yang dirancang khusus unt
 ## 📸 Screenshots
 
 ### Landing Page
+## Preview
+
+![Landing Page](./assets/Landing.png)
+
 - Hero section dengan phone mockup interaktif
 - Problem statement yang relatable untuk mahasiswa
 - Step-by-step cara kerja yang simpel
