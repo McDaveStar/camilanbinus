@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CABI | Solusi Makanan Mahasiswa Anti-Ribet</title>
+    <link rel="icon" href="./assets/logo-cabi.png" type="image/png">
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+
+    <!-- Tailwind & Icons -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/feather-icons"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#F15A24', // Orange Ceria
+                        accent: '#FFB000',  // Warm Yellow
+                        background: '#FFFDF7', // Off-white
+                        text: '#1F2937'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        .blob-shape {
+            border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
+            animation: morph 8s ease-in-out infinite;
+        }
+
+        @keyframes morph {
+
+            0%,
+            100% {
+                border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
+            }
+
+            34% {
+                border-radius: 70% 30% 50% 50% / 30% 30% 70% 70%;
+            }
+
+            67% {
+                border-radius: 100% 60% 60% 100% / 100% 100% 60% 60%;
+            }
+        }
+
+        .glass-nav {
+            background: rgba(255, 253, 247, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(241, 90, 36, 0.1);
+        }
+    </style>
+</head>
+
+<body class="bg-background text-text font-sans antialiased overflow-x-hidden selection:bg-primary selection:text-white">
+
+    <!-- Navbar -->
+    <nav class="fixed w-full z-50 glass-nav transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="flex items-center gap-2">
+                <img src="./assets/logo-cabi.png" alt="CABI Logo"
+                    class="h-16 md:h-20 object-contain -ml-2">
+            </a>
+            <div class="hidden md:flex items-center gap-8 font-bold text-sm text-gray-600">
+                <a href="#masalah" class="hover:text-primary transition-colors">Masalah Kamu</a>
+                <a href="#solusi" class="hover:text-primary transition-colors">Kenapa CABI?</a>
+                <a href="#cara-kerja" class="hover:text-primary transition-colors">Cara Kerja</a>
+            </div>
+            <a href="./app.html"
+                class="bg-primary hover:bg-[#d64d1c] text-white px-6 py-2.5 rounded-full font-bold transition-all shadow-[0_4px_15px_rgba(241,90,36,0.3)] hover:shadow-[0_6px_20px_rgba(241,90,36,0.4)] active:scale-95 flex items-center gap-2">
+                Pesan Sekarang <i data-feather="arrow-right" class="w-4 h-4"></i>
+            </a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative pt-32 pb-20 md:pt-48 md:pb-32 overflow-hidden min-h-[90vh] flex items-center">
+        <!-- Abstract Backgrounds -->
+        <div class="absolute top-0 right-0 -mr-20 -mt-20 w-[500px] h-[500px] bg-accent/20 blob-shape blur-3xl -z-10">
+        </div>
+        <div class="absolute bottom-10 left-0 -ml-20 w-[400px] h-[400px] bg-primary/10 blob-shape blur-3xl -z-10"
+            style="animation-delay: -4s;"></div>
+
+        <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
+            <div class="max-w-2xl relative z-10">
+                <div
+                    class="inline-block bg-primary/10 text-primary font-extrabold px-4 py-2 rounded-full text-sm mb-6 border border-primary/20 backdrop-blur-sm">
+                    🚀 #1 Solusi Mahasiswa Sibuk
+                </div>
+                <h1 class="text-5xl md:text-7xl font-black leading-[1.1] mb-6 text-gray-900 tracking-tight">
+                    Pusing Tiap Siang <br> <span
+                        class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent">Mau Makan
+                        Apa?</span>
+                </h1>
+                <p class="text-lg md:text-xl text-gray-600 mb-8 leading-relaxed max-w-lg">
+                    Stop habisin waktu berharga kamu cuma buat scroling aplikasi makanan. Kami kurasi menu terenak, kamu
+                    tinggal klik & ambil di kampus!
+                </p>
+                <div class="flex flex-wrap items-center gap-4">
+                    <a href="./app.html"
+                        class="bg-primary hover:bg-[#d64d1c] text-white px-8 py-4 rounded-full font-black text-lg transition-all shadow-[0_8px_25px_rgba(241,90,36,0.3)] hover:shadow-[0_12px_30px_rgba(241,90,36,0.4)] active:scale-95 flex items-center gap-2 group">
+                        Mulai Pesan <i data-feather="zap"
+                            class="w-5 h-5 group-hover:scale-110 transition-transform"></i>
+                    </a>
+                    <div class="flex -space-x-4 pl-4">
+                        <img class="w-12 h-12 rounded-full border-4 border-background object-cover"
+                            src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=100&q=80"
+                            alt="User">
+                        <img class="w-12 h-12 rounded-full border-4 border-background object-cover"
+                            src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=100&q=80"
+                            alt="User">
+                        <img class="w-12 h-12 rounded-full border-4 border-background object-cover"
+                            src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=100&q=80"
+                            alt="User">
+                        <div
+                            class="w-12 h-12 rounded-full border-4 border-background bg-gray-100 flex items-center justify-center text-xs font-bold text-gray-600">
+                            +1rb</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="relative z-10 hidden md:block">
+                <!-- Floating Phone Mockup Effect -->
+                <div
+                    class="relative mx-auto w-[320px] h-[650px] bg-white rounded-[3rem] border-[8px] border-gray-900 shadow-2xl transform rotate-3 hover:rotate-0 transition-transform duration-500 overflow-hidden group">
+                    <div class="absolute top-0 inset-x-0 h-6 bg-gray-900 rounded-b-2xl w-40 mx-auto z-20"></div>
+                    <!-- Dummy App Content for visual -->
+                    <div class="h-full w-full bg-gray-50 flex flex-col relative">
+                        <div class="bg-primary pt-12 pb-6 px-6 text-white rounded-b-[2rem] shadow-sm">
+                            <h3 class="font-black text-2xl">Pilihan Menu</h3>
+                            <p class="text-sm opacity-90">Bebas decision fatigue</p>
+                        </div>
+                        <div class="p-4 space-y-4 flex-grow overflow-hidden">
+                            <!-- Card 1 -->
+                            <div
+                                class="bg-white p-3 rounded-2xl shadow-sm border border-gray-100 flex gap-3 transform group-hover:-translate-y-1 transition-transform duration-300">
+                                <div class="w-20 h-20 bg-gray-200 rounded-xl overflow-hidden flex-shrink-0">
+                                    <img src="./assets/cilok-isi-frozen.jpg"
+                                        class="w-full h-full object-cover">
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-sm leading-tight mb-1">Cilok Isi Frozen</h4>
+                                    <p class="text-[10px] text-gray-500 mb-2">Keju, Sosis, Siomay</p>
+                                    <span class="text-primary font-bold text-sm">Rp 23.000</span>
+                                </div>
+                            </div>
+                            <!-- Card 2 -->
+                            <div
+                                class="bg-white p-3 rounded-2xl shadow-sm border border-gray-100 flex gap-3 transform group-hover:-translate-y-1 transition-transform duration-300 delay-75">
+                                <div class="w-20 h-20 bg-gray-200 rounded-xl overflow-hidden flex-shrink-0">
+                                    <img src="./assets/cilok-kuah-keju-frozen.jpg"
+                                        class="w-full h-full object-cover">
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-sm leading-tight mb-1">Cilok Kuah Keju</h4>
+                                    <p class="text-[10px] text-gray-500 mb-2">Cilok Polos + Kuah Keju Frozen</p>
+                                    <span class="text-primary font-bold text-sm">Rp 22.000</span>
+                                </div>
+                            </div>
+                            <div
+                                class="absolute bottom-4 left-4 right-4 bg-gray-900 text-white rounded-2xl p-4 flex justify-between items-center shadow-lg">
+                                <div>
+                                    <span class="text-xs text-gray-400 block">Total</span>
+                                    <span class="font-bold text-lg">Rp 45.000</span>
+                                </div>
+                                <div class="bg-primary px-4 py-2 rounded-xl font-bold text-sm">Checkout</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Floating Badges -->
+                <div class="absolute top-20 -left-10 bg-white p-4 rounded-2xl shadow-xl flex items-center gap-3 animate-bounce"
+                    style="animation-duration: 3s;">
+                    <div class="bg-green-100 p-2 rounded-full text-green-600"><i data-feather="check"></i></div>
+                    <div>
+                        <p class="text-xs text-gray-500 font-bold">Stok Aman</p>
+                        <p class="font-black text-gray-800 text-sm">Tersedia 15 Porsi</p>
+                    </div>
+                </div>
+                <div class="absolute bottom-32 -right-12 bg-white p-4 rounded-2xl shadow-xl flex items-center gap-3 animate-bounce"
+                    style="animation-duration: 4s; animation-delay: 1s;">
+                    <div class="bg-accent/20 p-2 rounded-full text-accent"><i data-feather="clock"></i></div>
+                    <div>
+                        <p class="text-xs text-gray-500 font-bold">Waktu Ambil</p>
+                        <p class="font-black text-gray-800 text-sm">Bisa Kapan Aja!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problem Section -->
+    <section id="masalah" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center max-w-2xl mx-auto mb-16">
+                <h2 class="text-3xl md:text-5xl font-black mb-4">Relate Sama Kondisi Ini?</h2>
+                <p class="text-gray-600 text-lg">Kehidupan mahasiswa udah pusing sama tugas, masa mikirin makan aja
+                    harus ikutan pusing?</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <div
+                    class="bg-gray-50 p-8 rounded-3xl border border-gray-100 hover:border-primary transition-colors group">
+                    <div
+                        class="w-14 h-14 bg-red-100 text-red-500 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                        <i data-feather="frown" class="w-7 h-7"></i>
+                    </div>
+                    <h3 class="text-xl font-black mb-3 text-gray-800">Decision Fatigue</h3>
+                    <p class="text-gray-600 leading-relaxed">Terlalu banyak pilihan di app ojol bikin kamu bingung,
+                        ujung-ujungnya ngabisin 30 menit cuma buat milih menu.</p>
+                </div>
+                <div
+                    class="bg-gray-50 p-8 rounded-3xl border border-gray-100 hover:border-accent transition-colors group">
+                    <div
+                        class="w-14 h-14 bg-yellow-100 text-yellow-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                        <i data-feather="dollar-sign" class="w-7 h-7"></i>
+                    </div>
+                    <h3 class="text-xl font-black mb-3 text-gray-800">Ongkir Mahal</h3>
+                    <p class="text-gray-600 leading-relaxed">Harga makanan 15 ribu, eh ongkirnya 12 ribu. Belum lagi
+                        biaya layanan dan embel-embel lainnya.</p>
+                </div>
+                <div
+                    class="bg-gray-50 p-8 rounded-3xl border border-gray-100 hover:border-primary transition-colors group">
+                    <div
+                        class="w-14 h-14 bg-blue-100 text-blue-500 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                        <i data-feather="clock" class="w-7 h-7"></i>
+                    </div>
+                    <h3 class="text-xl font-black mb-3 text-gray-800">Lama Nunggu Driver</h3>
+                    <p class="text-gray-600 leading-relaxed">Waktu istirahat kelas cuma dikit, keburu habis dipake
+                        nungguin abang ojol nyari rute ke kampus.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Step by Step Section -->
+    <section id="cara-kerja" class="py-24 bg-white border-t border-gray-50">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center max-w-2xl mx-auto mb-16">
+                <h2 class="text-3xl md:text-5xl font-black mb-4">Cara Kerja CABI</h2>
+                <p class="text-gray-600 text-lg">Makan enak cuma butuh 3 langkah simpel.</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-12 text-center">
+                <div class="group">
+                    <div
+                        class="w-16 h-16 bg-primary text-white rounded-2xl flex items-center justify-center text-xl font-bold mx-auto mb-6 shadow-lg shadow-primary/20">
+                        1</div>
+                    <h3 class="text-xl font-bold mb-2">Pilih Menu</h3>
+                    <p class="text-gray-500 text-sm">Pilih menu favoritmu di cabang terdekat.</p>
+                </div>
+                <div class="group">
+                    <div
+                        class="w-16 h-16 bg-accent text-white rounded-2xl flex items-center justify-center text-xl font-bold mx-auto mb-6 shadow-lg shadow-accent/20">
+                        2</div>
+                    <h3 class="text-xl font-bold mb-2">Bayar & WA</h3>
+                    <p class="text-gray-500 text-sm">Konfirmasi pembayaran via WhatsApp Admin.</p>
+                </div>
+                <div class="group">
+                    <div
+                        class="w-16 h-16 bg-green-500 text-white rounded-2xl flex items-center justify-center text-xl font-bold mx-auto mb-6 shadow-lg shadow-green-500/20">
+                        3</div>
+                    <h3 class="text-xl font-bold mb-2">Ambil Makanan</h3>
+                    <p class="text-gray-500 text-sm">Ambil di titik pickup sesuai jam janjian.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solution / Kenapa CABI -->
+    <section id="solusi" class="py-24 bg-gray-900 text-white relative overflow-hidden">
+        <div
+            class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary rounded-full opacity-20 blur-[100px] pointer-events-none">
+        </div>
+        <div class="max-w-7xl mx-auto px-6 relative z-10">
+            <div class="grid md:grid-cols-2 gap-16 items-center">
+                <div>
+                    <h2 class="text-4xl md:text-5xl font-black mb-6 leading-tight">CABI Hadir Buat <br><span
+                            class="text-primary">Nyederhanain</span> Semuanya.</h2>
+                    <p class="text-gray-400 text-lg mb-8 leading-relaxed">Kami menghilangkan 90% proses mikir kamu. Kami
+                        hanya menyediakan menu-menu andalan (Best Seller) yang dijamin enak.</p>
+
+                    <ul class="space-y-6">
+                        <li class="flex items-center gap-4">
+                            <div
+                                class="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center text-accent flex-shrink-0">
+                                <i data-feather="star"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-lg mb-1 text-white">Menu Terkurasi</h4>
+                                <p class="text-sm text-gray-400">Nggak ada lagi bingung milih menu.</p>
+                            </div>
+                        </li>
+                        <li class="flex items-center gap-4">
+                            <div
+                                class="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center text-green-400 flex-shrink-0">
+                                <i data-feather="map-pin"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-lg mb-1 text-white">Diambil di Dekatmu</h4>
+                                <p class="text-sm text-gray-400">Titik pickup strategis di sekitar area kampus.</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="relative">
+                    <img src="./assets/pengganti-grill-real.png" alt="Cimol Cabi"
+                        class="rounded-3xl shadow-2xl border-8 border-gray-800 transform rotate-2">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="py-24 bg-background relative overflow-hidden">
+        <div class="max-w-4xl mx-auto px-6 text-center relative z-10">
+            <h2 class="text-4xl md:text-6xl font-black mb-6 text-gray-900">Udah Lapar?</h2>
+            <p class="text-xl text-gray-600 mb-10">Jangan biarkan cacing di perutmu demo. Klik tombol di bawah dan
+                amankan porsi kamu sekarang sebelum stok habis!</p>
+            <a href="./app.html"
+                class="inline-flex items-center justify-center bg-primary hover:bg-[#d64d1c] text-white px-10 py-5 rounded-full font-black text-2xl transition-all shadow-[0_10px_30px_rgba(241,90,36,0.3)] hover:shadow-[0_15px_40px_rgba(241,90,36,0.4)] active:scale-95 group">
+                Pre-Order Sekarang! <i data-feather="chevron-right"
+                    class="w-8 h-8 ml-2 group-hover:translate-x-2 transition-transform"></i>
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-gray-100 pt-16 pb-8">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-center mb-12">
+                <div class="mb-6 md:mb-0 text-center md:text-left">
+                    <img src="./assets/logo-cabi-blendin-mungkin.png" alt="CABI Logo"
+                        class="h-12 mb-4 mx-auto md:mx-0 object-contain">
+                    <p class="text-gray-500 font-medium">Solusi Makan Cepat, Anti-Ribet buat Mahasiswa.</p>
+                </div>
+                <div class="flex gap-4">
+                    <a href="#"
+                        class="w-12 h-12 bg-gray-50 rounded-full flex items-center justify-center text-gray-600 hover:text-primary hover:bg-primary/10 transition-colors"><i
+                            data-feather="instagram"></i></a>
+                </div>
+            </div>
+            <div class="text-center text-sm text-gray-400 font-medium">
+                &copy; 2026 Cabi Indonesia. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        feather.replace();
+    </script>
+</body>
+
+</html>

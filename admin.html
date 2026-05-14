@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Admin Cabi</title>
+    <link rel="icon" href="./assets/logo-cabi.png" type="image/png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/feather-icons"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        /* Toast Notifications */
+        #toast-container {
+            position: fixed;
+            top: 24px;
+            right: 24px;
+            z-index: 9999;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            pointer-events: none;
+        }
+        .toast {
+            pointer-events: auto;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 14px 20px;
+            border-radius: 16px;
+            font-size: 14px;
+            font-weight: 600;
+            color: #fff;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            animation: toastIn 0.4s ease forwards;
+            max-width: 380px;
+        }
+        .toast.toast-out {
+            animation: toastOut 0.3s ease forwards;
+        }
+        .toast-success { background: #25D366; }
+        .toast-error { background: #ef4444; }
+        .toast-info { background: #3b82f6; }
+        .toast-warning { background: #f59e0b; }
+        @keyframes toastIn {
+            from { opacity: 0; transform: translateX(40px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        @keyframes toastOut {
+            from { opacity: 1; transform: translateX(0); }
+            to { opacity: 0; transform: translateX(40px); }
+        }
+    </style>
+</head>
+
+<body class="bg-[#FFFDF7] text-gray-800 font-sans min-h-screen flex items-center justify-center p-4">
+
+    <!-- Login Modal -->
+    <div id="login-section"
+        class="bg-white p-8 rounded-3xl shadow-lg w-full max-w-sm text-center border border-gray-100 relative overflow-hidden">
+        <div class="absolute -bottom-10 -right-10 w-32 h-32 bg-[#FFB000] rounded-full opacity-20"></div>
+        <img src="./assets/logo-cabi.png" alt="Cabi Logo" class="h-16 mx-auto mb-6 object-contain relative z-10">
+        <h2 class="text-2xl font-black mb-1 relative z-10">Admin Panel</h2>
+        <p class="text-xs text-gray-500 mb-6 relative z-10">Masukkan Email & Password Admin</p>
+
+        <input type="email" id="admin-email" placeholder="Email Admin"
+            class="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 mb-3 text-sm focus:outline-none focus:border-[#F15A24] focus:ring-1 focus:ring-[#F15A24] transition-all relative z-10">
+        <input type="password" id="admin-pass" placeholder="Password"
+            class="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 mb-6 text-sm focus:outline-none focus:border-[#F15A24] focus:ring-1 focus:ring-[#F15A24] transition-all relative z-10">
+
+        <button id="login-btn" onclick="login()"
+            class="w-full bg-[#F15A24] hover:bg-[#d64d1c] text-white font-bold py-4 rounded-2xl transition-all shadow-[0_8px_20px_rgba(241,90,36,0.2)] active:scale-95 relative z-10 flex items-center justify-center gap-2">
+            <i data-feather="unlock" class="w-4 h-4"></i> Masuk ke Sistem
+        </button>
+
+        <a href="./app.html" class="block mt-6 text-sm text-gray-400 hover:text-[#F15A24] relative z-10">Kembali ke
+            Beranda</a>
+    </div>
+
+    <!-- Admin Panel -->
+    <div id="admin-section" class="hidden w-full max-w-4xl flex flex-col gap-6">
+        <div
+            class="flex flex-wrap justify-between items-center bg-white p-6 rounded-3xl shadow-sm border border-gray-100">
+            <div class="flex items-center gap-4">
+                <div class="w-12 h-12 bg-[#FFB000]/20 rounded-2xl flex items-center justify-center p-2">
+                    <img src="./assets/logo-cabi.png" alt="Cabi Logo" class="object-contain scale-150">
+                </div>
+                <div>
+                    <h2 class="text-xl font-black leading-none mb-1">Dashboard Admin</h2>
+                    <p class="text-xs text-green-600 font-bold flex items-center gap-1" id="admin-loc-name"><span
+                            class="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse"></span> Memuat Lokasi...</p>
+                </div>
+            </div>
+            <button onclick="logout()"
+                class="mt-4 md:mt-0 flex items-center gap-2 text-sm font-bold text-gray-500 hover:text-red-500 bg-gray-50 px-4 py-2.5 rounded-full transition-colors border border-gray-200">
+                <i data-feather="log-out" class="w-4 h-4"></i> Keluar
+            </button>
+        </div>
+
+        <!-- TABS -->
+        <div class="flex gap-4">
+            <button onclick="switchTab('stock')" id="tab-stock"
+                class="flex-1 py-3 bg-[#F15A24] text-white font-bold rounded-2xl transition-all shadow-md shadow-[#F15A24]/20">Stok
+                Makanan</button>
+            <button onclick="switchTab('orders')" id="tab-orders"
+                class="flex-1 py-3 bg-white text-gray-600 font-bold rounded-2xl border border-gray-200 transition-all hover:bg-gray-50 relative">
+                Pesanan Masuk
+                <span id="pending-badge"
+                    class="absolute -top-2 -right-2 bg-red-500 text-white text-[10px] font-black w-6 h-6 flex items-center justify-center rounded-full border-2 border-white scale-0 transition-transform">0</span>
+            </button>
+        </div>
+
+        <div id="stock-view" class="w-full flex flex-col gap-6">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Stats -->
+                <div class="md:col-span-1 flex flex-col gap-4">
+                    <div class="bg-white p-6 rounded-3xl shadow-sm border border-gray-100">
+                        <h3
+                            class="font-bold text-gray-500 text-xs uppercase tracking-wider mb-4 flex items-center gap-2">
+                            <i data-feather="bar-chart-2" class="w-4 h-4"></i> Total Penjualan</h3>
+                        <p id="total-trx" class="text-4xl font-black text-[#F15A24] mb-1">0</p>
+                        <p class="text-xs text-gray-500 font-medium">Transaksi Diselesaikan</p>
+                    </div>
+
+                    <div class="bg-white p-6 rounded-3xl shadow-sm border border-gray-100">
+                        <h3
+                            class="font-bold text-gray-500 text-xs uppercase tracking-wider mb-4 flex items-center gap-2">
+                            <i data-feather="dollar-sign" class="w-4 h-4"></i> Estimasi Pendapatan</h3>
+                        <p id="total-revenue" class="text-2xl font-black text-[#FFB000] mb-1">Rp 0</p>
+                        <p class="text-xs text-gray-500 font-medium">Dari platform Cabi</p>
+                    </div>
+                </div>
+
+                <!-- Stocks -->
+                <div class="md:col-span-2 bg-white p-6 md:p-8 rounded-3xl shadow-sm border border-gray-100">
+                    <div class="flex justify-between items-center mb-6">
+                        <h3 class="font-black text-xl flex items-center gap-2"><i data-feather="box"
+                                class="text-[#F15A24]"></i> Manajemen Stok</h3>
+                    </div>
+
+                    <div id="stock-container" class="space-y-6">
+                        <!-- JS renders here -->
+                    </div>
+
+                    <div class="mt-8 pt-6 border-t border-gray-100 flex justify-end">
+                        <button onclick="saveStocks()"
+                            class="bg-[#25D366] hover:bg-[#1DA851] text-white font-bold py-3.5 px-8 rounded-2xl transition-all shadow-[0_8px_20px_rgba(37,211,102,0.3)] active:scale-95 flex items-center gap-2">
+                            <i data-feather="save" class="w-5 h-5"></i> Simpan Perubahan Stok
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Manajemen Menu -->
+            <div class="bg-white p-6 md:p-8 rounded-3xl shadow-sm border border-gray-100 mt-6">
+                <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6 gap-4">
+                    <h3 class="font-black text-xl flex items-center gap-2"><i data-feather="list"
+                            class="text-[#F15A24]"></i> Manajemen Menu</h3>
+                    <button onclick="openMenuModal()"
+                        class="bg-[#F15A24] hover:bg-[#d64d1c] text-white font-bold py-2.5 px-6 rounded-xl transition-all shadow-[0_4px_15px_rgba(241,90,36,0.3)] active:scale-95 flex items-center gap-2 text-sm">
+                        <i data-feather="plus" class="w-4 h-4"></i> Tambah Menu Baru
+                    </button>
+                </div>
+
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left text-sm text-gray-500">
+                        <thead class="text-xs text-gray-400 uppercase bg-gray-50 border-b border-gray-100">
+                            <tr>
+                                <th scope="col" class="px-4 py-3 rounded-tl-xl w-12">ID</th>
+                                <th scope="col" class="px-4 py-3">Menu</th>
+                                <th scope="col" class="px-4 py-3">Harga</th>
+                                <th scope="col" class="px-4 py-3 text-right rounded-tr-xl">Aksi</th>
+                            </tr>
+                        </thead>
+                        <tbody id="menu-table-body" class="divide-y divide-gray-100">
+                            <!-- JS renders here -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- Orders View -->
+        <div id="orders-view" class="w-full flex flex-col gap-6 hidden">
+            <div class="bg-white p-6 rounded-3xl shadow-sm border border-gray-100">
+                <h3 class="font-bold text-gray-800 text-lg mb-6 flex items-center justify-between">
+                    <span>Pesanan Belum Dikonfirmasi</span>
+                    <button onclick="fetchOrders()"
+                        class="text-xs text-gray-500 hover:text-primary flex items-center gap-1 bg-gray-50 px-3 py-1.5 rounded-full"><i
+                            data-feather="refresh-cw" class="w-3 h-3"></i> Refresh</button>
+                </h3>
+                <div id="orders-container" class="flex flex-col gap-4">
+                    <!-- JS renders orders here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Menu Form Modal -->
+    <div id="menu-form-modal"
+        class="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4 opacity-0 pointer-events-none transition-opacity duration-300">
+        <div class="bg-white rounded-3xl w-full max-w-2xl max-h-[90vh] overflow-y-auto p-6 md:p-8 transform scale-95 transition-transform duration-300"
+            id="menu-form-drawer">
+            <div
+                class="flex justify-between items-center mb-6 sticky top-0 bg-white z-10 pb-2 border-b border-gray-100">
+                <h3 class="font-black text-xl" id="menu-modal-title">Tambah Menu Baru</h3>
+                <button onclick="closeMenuModal()"
+                    class="w-8 h-8 bg-gray-100 rounded-full flex items-center justify-center text-gray-500 hover:bg-gray-200 transition-colors">
+                    <i data-feather="x" class="w-4 h-4"></i>
+                </button>
+            </div>
+
+            <div class="space-y-4">
+                <input type="hidden" id="form-menu-id">
+
+                <div>
+                    <label class="block text-xs font-bold text-gray-500 uppercase mb-2">Nama Menu</label>
+                    <input type="text" id="form-menu-name"
+                        class="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-[#F15A24]">
+                </div>
+
+                <div class="grid grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-xs font-bold text-gray-500 uppercase mb-2">Harga (Rp)</label>
+                        <input type="number" id="form-menu-price"
+                            class="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-[#F15A24]">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-gray-500 uppercase mb-2">Upload Foto Menu</label>
+                        <input type="file" id="form-menu-image-file" accept="image/*"
+                            class="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-[#F15A24] file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-xs file:font-bold file:bg-[#F15A24]/10 file:text-[#F15A24] hover:file:bg-[#F15A24]/20 transition-all cursor-pointer">
+                        <input type="hidden" id="form-menu-image-hidden">
+                        <div id="current-image-preview" class="mt-2 hidden">
+                            <span class="text-[10px] text-gray-400 block mb-1">Foto saat ini:</span>
+                            <img id="form-image-preview-img" src=""
+                                class="h-16 w-16 object-cover rounded-lg border border-gray-200 bg-gray-100">
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-bold text-gray-500 uppercase mb-2">Deskripsi Singkat</label>
+                    <input type="text" id="form-menu-desc"
+                        class="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-[#F15A24]">
+                </div>
+
+                <div>
+                    <label class="block text-xs font-bold text-gray-500 uppercase mb-2">Komposisi / Deskripsi
+                        Lengkap</label>
+                    <textarea id="form-menu-longdesc" rows="3"
+                        class="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-[#F15A24]"></textarea>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-bold text-gray-500 uppercase mb-2">Cara Memasak / Penyajian</label>
+                    <textarea id="form-menu-cooking" rows="3"
+                        class="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-[#F15A24]"></textarea>
+                </div>
+
+                <div class="pt-4 flex justify-end gap-3">
+                    <button onclick="closeMenuModal()"
+                        class="px-6 py-3 rounded-xl font-bold text-gray-500 hover:bg-gray-100 transition-colors">Batal</button>
+                    <button id="save-menu-btn" onclick="saveMenu()"
+                        class="bg-[#F15A24] hover:bg-[#d64d1c] text-white px-8 py-3 rounded-xl font-bold transition-all shadow-md active:scale-95 flex items-center gap-2">
+                        <i data-feather="save" class="w-4 h-4"></i> Simpan
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Container -->
+    <div id="toast-container"></div>
+
+    <script type="module" src="./admin.js"></script>
+</body>
+
+</html>
